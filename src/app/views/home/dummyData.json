@@ -1,0 +1,14 @@
+{
+  "data": [
+    {
+      "firstName": "fname1",
+      "lastName": "lname1",
+      "emergencyContact": "contact1"
+    },
+    {
+      "firstName": "fname2",
+      "lastName": "lname2",
+      "emergencyContact": "contact2"
+    }
+  ]
+}
