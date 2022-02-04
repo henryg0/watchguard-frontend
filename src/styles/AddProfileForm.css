@@ -1,0 +1,14 @@
+.formRow {
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
+  width: 99%;
+  margin: 2vh 0;
+}
+
+.submissionButton {
+  width: 99%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

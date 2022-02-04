@@ -1,21 +1,36 @@
-import {Button} from 'antd';
+import {Button, Input} from 'antd';
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
+import '../../styles/Home.css'
+import '../../styles/AddProfileForm.css'
 
 function AddProfileForm() {
+  const inputDataStyle = {
+    margin: '0 5px'
+  }
+  
   const [profile, setProfile] = useState({
     firstName: '',
     lastName: '',
     emergencyContact: '',
+    bloodPressure: 5,
+    carbonMonoxide: 5,
+    temperature: 90,
+    healthConditions: ''
   })
 
   const handleAddProfile = (e) => {
-    console.log("added new profile");
+    console.log("adding new profile:", profile);
+    axios.post('http://localhost:3001/profiles/create', profile);
     // add new profile to database
     setProfile((profile) => ({
       firstName: '',
       lastName: '',
-      emergencyContact: ''
+      emergencyContact: '',
+      bloodPressure: 5,
+      carbonMonoxide: 5,
+      temperature: 90,
+      healthConditions: ''
     }))
   }
   
@@ -42,37 +57,56 @@ function AddProfileForm() {
       emergencyContact: e.target.value
     }));
   }
+  const handleUpdateHealthCondition = (e) => {
+    e.persist();
+    setProfile((profile) => ({
+      ...profile,
+      healthConditions: e.target.value
+    }));
+  }
+  
 
   return (
     <form className="profileForm">
-      <input 
-        id = 'first-name'
-        class = 'form-field'
-        type = 'text'
-        placeholder = 'first name'
-        name = 'firstName'
-        value = {profile.firstName}
-        onChange = {handleUpdateFirstName}
-      />
-      <input 
-        id = 'last-name'
-        class = 'form-field'
-        type = 'text'
-        placeholder = 'last name'
-        name = 'lastName'
-        value = {profile.lastName}
-        onChange = {handleUpdateLastName}
-      />
-      <input 
-        id = 'emergency-contact'
-        class = 'form-field'
-        type = 'text'
-        placeholder = 'emergency contact'
-        name = 'emergencyContact'
-        value = {profile.emergencyContact}
-        onChange = {handleUpdateEmergencyContact}
-      />
-      <Button type='primary' onClick={handleAddProfile}> Add New Profile </Button>
+      <div className='formRow'>
+        <Input
+        style={inputDataStyle}
+        size='medium'
+        value={profile.firstName}
+        onChange={handleUpdateFirstName}
+        defaultValue=''
+        addonBefore='first name:'/>
+        <Input 
+        style={inputDataStyle}
+        size='medium'
+        value={profile.lastName}
+        onChange={handleUpdateLastName}
+        defaultValue=''
+        addonBefore='last name:'
+        />
+        <Input 
+        style={inputDataStyle}
+        size='medium'
+        value={profile.emergencyContact}
+        onChange={handleUpdateEmergencyContact}
+        defaultValue=''
+        addonBefore='emergency contact #:'/>
+      </div>
+
+      <div className='formRow'>
+      <Input 
+        style={inputDataStyle}
+        size='medium'
+        value={profile.healthConditions}
+        onChange={handleUpdateHealthCondition}
+        defaultValue=''
+        addonBefore='health conditions:'/>
+      </div>
+      <div className='submissionButton'>
+        <Button  type='primary' onClick={handleAddProfile}> Add New Profile </Button>
+      </div>
+
+
     </form>
   )
 }
