@@ -2,10 +2,28 @@ import AddProfileForm from "../../components/AddProfileForm";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../../../styles/Home.css";
-import firefighter from '../../../img/firefighter.png'
+import firefighter from "../../../img/firefighter.png";
 
 const Home = () => {
   const [profiles, setProfiles] = useState([]);
+  const [carbonMonoxideData, setCarbonMonoxideData] = useState("");
+  const [temperatureData, setTemperatureData] = useState("");
+  const [bloodPressureData, setBloodPressureData] = useState("");
+  useEffect(() => {
+    const interval = setInterval(async () => {
+      await axios
+        .get("http://localhost:3001/profiles/readRFModule")
+        .then((res) => {
+          setCarbonMonoxideData(res.data.rfData.carbonMonoxideData);
+          setBloodPressureData(res.data.rfData.bloodPressureData);
+          setTemperatureData(res.data.rfData.temperatureData);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }, 1500);
+    return () => clearInterval(interval);
+  }, []);
   useEffect(() => {
     axios
       .get("http://localhost:3001/profiles")
@@ -16,6 +34,7 @@ const Home = () => {
         console.error(err);
       });
   }, [profiles]);
+
   return (
     <div>
       <h1>Responders</h1>
@@ -24,7 +43,7 @@ const Home = () => {
         {profiles &&
           profiles.map((item) => (
             <div className="profileCard">
-              <div className='profileInfo'>
+              <div className="profileInfo">
                 <p>
                   <strong>name:</strong> {item.firstName + " " + item.lastName}
                 </p>
@@ -32,13 +51,13 @@ const Home = () => {
                   <strong>emergency contact:</strong> {item.emergencyContact}
                 </p>
                 <p>
-                  <strong>blood pressure:</strong> {item.bloodPressure}
+                  <strong>blood pressure:</strong> {bloodPressureData}
                 </p>
                 <p>
-                  <strong>carbon monoxide:</strong> {item.carbonMonoxide}
+                  <strong>carbon monoxide:</strong> {carbonMonoxideData}
                 </p>
                 <p>
-                  <strong>temperature:</strong> {item.temperature}
+                  <strong>temperature:</strong> {temperatureData}
                 </p>
                 <p>
                   <strong>health conditions:</strong> {item.healthConditions}
@@ -48,8 +67,8 @@ const Home = () => {
                 <img
                   src={firefighter}
                   alt="firefighter"
-                  width='100px'
-                  height='100px'
+                  width="100px"
+                  height="100px"
                 ></img>
               </div>
             </div>
