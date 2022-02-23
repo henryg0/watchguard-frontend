@@ -7,16 +7,17 @@ import firefighter from "../../../img/firefighter.png";
 const Home = () => {
   const [profiles, setProfiles] = useState([]);
   const [carbonMonoxideData, setCarbonMonoxideData] = useState("");
-  const [temperatureData, setTemperatureData] = useState("");
-  const [bloodPressureData, setBloodPressureData] = useState("");
+  const [heartRateData, setHeartRateData] = useState("");
+  const [methaneData, setMethaneData] = useState("");
   useEffect(() => {
     const interval = setInterval(async () => {
       await axios
         .get("http://localhost:3001/profiles/readRFModule")
         .then((res) => {
-          setCarbonMonoxideData(res.data.rfData.carbonMonoxideData);
-          setBloodPressureData(res.data.rfData.bloodPressureData);
-          setTemperatureData(res.data.rfData.temperatureData);
+          console.log(res.data);
+          setHeartRateData(res.data.beats_per_minute);
+          setCarbonMonoxideData(res.data.co_level);
+          setMethaneData(res.data.methane_level);
         })
         .catch((err) => {
           console.error(err);
@@ -51,13 +52,13 @@ const Home = () => {
                   <strong>emergency contact:</strong> {item.emergencyContact}
                 </p>
                 <p>
-                  <strong>blood pressure:</strong> {bloodPressureData}
+                  <strong>Heart Rate:</strong> {heartRateData}
                 </p>
                 <p>
-                  <strong>carbon monoxide:</strong> {carbonMonoxideData}
+                  <strong>Carbon Monoxide Levels:</strong> {carbonMonoxideData}
                 </p>
                 <p>
-                  <strong>temperature:</strong> {temperatureData}
+                  <strong>Methane Levels: </strong> {methaneData}
                 </p>
                 <p>
                   <strong>health conditions:</strong> {item.healthConditions}
