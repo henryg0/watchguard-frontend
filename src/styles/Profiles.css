@@ -1,0 +1,58 @@
+@font-face {
+  font-family: "Montserrat";
+  src: url("/src/fonts/Montserrat-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/fonts/Poppins-Bold.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+.profile-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: rgb(255, 255, 255, 0.9) !important;
+  width: 30%;
+  margin: 1rem;
+  position: relative;
+  left: auto;
+  right: auto;
+  border-radius: 2rem;
+}
+
+.profile-info {
+  color: black;
+  font-family: "Montserrat";
+  padding: 15px;
+}
+
+.profiles {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.profilePic {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+}
+
+body {
+    background: url("../img/homepage-background.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.profile-title {
+  text-align: center;
+  font-family: "Poppins";
+}

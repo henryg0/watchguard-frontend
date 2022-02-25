@@ -1,24 +1,69 @@
-.profileCard {
-  display: flex;
-  flex-direction: row;
-  background-color: aqua;
-  border: 5px;
-  border-style: solid;
-  margin: 5px;
-  width: 20rem;
+@font-face {
+  font-family: "Montserrat";
+  src: url("/src/fonts/Montserrat-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
 }
 
-.profiles {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+@font-face {
+  font-family: "MontserratBold";
+  src: url("/src/fonts/Montserrat-Bold.ttf");
+  font-weight: 400;
+  font-style: normal;
 }
 
-.profileInfo {
-  margin: 0 0 10px 0
+@font-face {
+  font-family: "Courgette";
+  src: url("/src/fonts/Courgette-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
 }
 
-.profilePic {
-  display: flex;
-  margin-left: 25%;
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/fonts/Poppins-Bold.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PTSerif";
+  src: url("/src/fonts/PTSerif-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+body {
+  background: url("../img/homepage-background.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin-top: -70px;
+}
+
+.project-info-container {
+  padding: 2.5rem;
+  background-color: white;
+  opacity: 90%;
+  width: 55%;
+  height: 25%;
+  margin: auto;
+  position: relative;
+  top: 12rem;
+  left: auto;
+  right: auto;
+  border-radius: 2rem;
+}
+
+.project-info {
+  opacity: 100%;
+  font-size: 1.15rem;
+  width: 100%;
+  font-family: "Montserrat";
+}
+
+.project-title {
+  opacity: 100%;
+  font-size: 2rem;
+  font-family: "MontserratBold";
 }

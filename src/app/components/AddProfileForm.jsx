@@ -1,7 +1,6 @@
 import {Button, Input} from 'antd';
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
-import '../../styles/Home.css'
 import '../../styles/AddProfileForm.css'
 
 function AddProfileForm() {
@@ -70,6 +69,7 @@ function AddProfileForm() {
     <form className="profileForm">
       <div className='formRow'>
         <Input
+        className="dataInput"
         style={inputDataStyle}
         size='medium'
         value={profile.firstName}
@@ -103,7 +103,7 @@ function AddProfileForm() {
         addonBefore='health conditions:'/>
       </div>
       <div className='submissionButton'>
-        <Button  type='primary' onClick={handleAddProfile}> Add New Profile </Button>
+        <Button style={{backgroundColor: "#c5d5cb"}} onClick={handleAddProfile}> Add New Profile </Button>
       </div>
 
 

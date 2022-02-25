@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "Montserrat";
+  src: url("/src/fonts/Montserrat-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
 .App {
   text-align: center;
 }
@@ -35,4 +42,16 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.responderNavBarItem {
+  color: black !important;
+  font-family: "Montserrat";
+  opacity: 100%; 
+}
+
+.responderNavBar {
+  background-color: #e4e4e7 !important;
+  border: none !important;
+  background: rgba(228, 228, 231, 0.1) !important;
 }
